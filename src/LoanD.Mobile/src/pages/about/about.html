@@ -7,5 +7,26 @@
 </ion-header>
 
 <ion-content padding>
-
+  
+<ion-item>
+    <ion-label floating>จำนวนเงินที่ต้องการกู้ (บาท) </ion-label>
+    <ion-input type="name" [(ngModel)]="BeginMoney"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>จำนวนปีที่กู้ </ion-label>
+    <ion-input type="name" [(ngModel)]="YearRange"></ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <button ion-button (click)="CalculateInterest()">บันทึก</button>
+  </ion-item>
+  <ion-list>
+    <ion-item *ngFor="let it of LoanYears" >
+      <ion-label>ปีที่ {{ it.year }} : </ion-label>
+      <ion-label>คงค้าง {{ it.remainAmount }} </ion-label>
+      <ion-label>ดอกเบี้ย {{ it.interestAmount }} </ion-label>
+      <ion-label>= {{ it.remainAmount }} x {{ InterestRate }} / 100 </ion-label>
+      <ion-label>ยอดที่ต้องชำระ {{ it.paidAmount }}</ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

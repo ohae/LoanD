@@ -5,21 +5,24 @@ using System.Threading.Tasks;
 
 namespace LoadD.Api
 {
-    public class InterestCalculator
+    public static class InterestCalculator
     {
-        public LoanInfo CalculateInterest(double beginMoney, int yearsRange, double interestRate)
+        public static LoanInfo CalculateInterest(double beginMoney, int yearsRange, double interestRate)
         {
             var remain = beginMoney;
             var result = new LoanInfo();
+            result.InterestRate =  (interestRate * 100).ToString();
 
             for (int i = 0; i < yearsRange; i++)
             {
-                var yearInterest = (remain * interestRate) + remain;
+                var interestAmount = (remain * interestRate);
+                var yearInterest = interestAmount + remain;
                 result.LoanYears.Add(new LoanYear
                 {
                     RemainAmount = remain,
                     Year = i + 1,
-                    PaidAmount = yearInterest
+                    PaidAmount = yearInterest,
+                    InterestAmount = interestAmount
                 });
 
                 remain = yearInterest;

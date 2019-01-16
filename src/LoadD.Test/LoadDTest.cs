@@ -12,8 +12,7 @@ namespace LoadD.Test
         [MemberData(nameof(CalculateInterestData))]
         public void CalculateInterest(double beginMoney, int yearRange, double interestRate, LoanInfo expected)
         {
-            var sut = new InterestCalculator();
-            var result = sut.CalculateInterest(beginMoney, yearRange, interestRate);
+            var result = InterestCalculator.CalculateInterest(beginMoney, yearRange, interestRate);
             result.Should().BeEquivalentTo(expected);
         }
 

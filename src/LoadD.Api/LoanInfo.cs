@@ -8,6 +8,7 @@ namespace LoadD.Api
     public class LoanInfo
     {
         public List<LoanYear> LoanYears { get; set; }
+        public string InterestRate { get; set; }
 
         public LoanInfo()
         {
@@ -19,6 +20,7 @@ namespace LoadD.Api
     {
         public double RemainAmount { get; set; }
         public int Year { get; set; }
+        public double InterestAmount { get; set; }
         public double PaidAmount { get; set; }
     }
 }

@@ -16,21 +16,21 @@ namespace LoadD.Api.Controllers
         [HttpGet("{beginMoney}/{yearsRange}", Name = "CalculateInterest")]
         public ActionResult<LoanInfo> CalculateInterest(double beginMoney, int yearsRange)
         {
-            var engine = new InterestCalculator();
-            return engine.CalculateInterest(beginMoney, yearsRange, interestRate);
+            return InterestCalculator.CalculateInterest(beginMoney, yearsRange, interestRate);
         }
 
         [HttpGet]
         public ActionResult<double> GetInterestRate()
         {
-            return interestRate;
+            return interestRate * 100;
         }
 
         // PUT api/values/5
         [HttpPut(Name = "SetInterestRate")]
-        public void SetInterestRate([FromBody] string myInterestRate)
+        public SetInterestRateRequest SetInterestRate([FromBody] SetInterestRateRequest myInterestRate)
         {
-            interestRate = double.Parse(myInterestRate) / 100;
+            interestRate = double.Parse(myInterestRate.InterestRate) / 100;
+            return myInterestRate;
         }
     }
 }
