@@ -1,0 +1,7 @@
+{
+  "name": "LoanD.Mobile",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
